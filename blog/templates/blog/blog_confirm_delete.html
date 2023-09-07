@@ -1,0 +1,18 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    Уверены что хотите удалить "{{ object }}"? <br>
+                    <input type="submit" class="btn btn-danger" value="Вы уверены?">
+                </form>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'blog:blog_list' %}" role="button">Отмена
+                    &raquo;</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

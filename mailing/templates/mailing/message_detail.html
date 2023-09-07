@@ -1,0 +1,18 @@
+{% extends 'mailing/base.html' %}
+{% load mediapath %}
+{% block content %}
+
+<div class="table">
+    <table>
+        <tr>
+            <h2>{{ message.header }}</h2>
+            <h3>{{message.body}}</h3>
+        </tr>
+    </table>
+</div>
+<h5 style="color:#FF0000">{{ object.view_count }}</h5>
+<a class="btn btn-warning" href="{% url 'mailing:message_update' object.pk %}" role="button">Изменить
+</a> <br>
+<a class="btn btn-danger" href="{% url 'mailing:message_delete' object.pk %}" role="button">Удалить
+</a> <br>
+{% endblock %}

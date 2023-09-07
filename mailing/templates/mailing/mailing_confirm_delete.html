@@ -1,0 +1,12 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+    <form class="obratnuj-zvonok" autocomplete="off" method='post'>
+        {% csrf_token %}
+        <div class="container">
+            Уверены что хотите удалить рассылку {{ mailing }}
+            <input type="submit" class="btn btn-success" value="Уверен">
+        </div>
+    </form>
+    <a href="{% url 'mailing:mailing_list' %}" class="btn btn-secondary my-3"
+       style="background: #0062cc">Назад</a>
+{% endblock %}

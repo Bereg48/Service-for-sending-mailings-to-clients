@@ -1,0 +1,45 @@
+{% extends 'mailing/base.html' %}
+{% load mediapath %}
+{% block content %}
+{% for mailing in mailing_list %}
+<div class="my-3 p-3 bg-white rounded box-shadow">
+
+    {% if mailing.user == user or user.is_superuser %}
+    <a href="{% url 'mailing:mailing_update' mailing.pk %}" class="border-bottom border-gray pb-2 mb-0">
+        {{ mailing }}</a>
+    {% else %}
+    <a href="#" class="border-bottom border-gray pb-2 mb-0">{{ mailing }}</a>
+    {% endif %}
+
+    <div class="media text-muted pt-3">
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">Периодичность: {{ mailing.frequency }}</strong>
+            <strong class="d-block text-gray-dark">Статус: {{ mailing.status }}</strong>
+        </p>
+    </div>
+
+    {% if user.is_staff or user == mailing.user %}
+    <a href="{% url 'mailing:mailing_delete' mailing.pk %}" class="btn btn-secondary"
+       style="background: red">Удалить</a>
+    {% endif %}
+
+    {% if user.is_staff or user == mailing.user %}
+    <a href="{% url 'mailing:toggle_status' mailing.pk %}" class="btn btn-secondary"
+       style="background: blue">
+        {% if mailing.status == 'FINISH' %}
+        Активировать
+        {% else %}
+        Отключить
+        {% endif %}
+    </a>
+    {% endif %}
+</div>
+{% endfor %}
+
+{% if user.is_authenticated %}
+<div class="container">
+    <a href="{% url 'mailing:mailing_create' %}" class="btn btn-secondary my-3"
+       style="background: darkgreen">Создать</a>
+{% endif %}
+</div>
+{% endblock %}

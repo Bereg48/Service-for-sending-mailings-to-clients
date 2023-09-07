@@ -1,0 +1,25 @@
+{% extends 'mailing/base.html' %}
+{% load mediapath %}
+{% block content %}
+<div class="table">
+    <table>
+        {% for client in client_list %}
+        <tr>
+            <td>
+                <a style="color: black" class="btn" href="{% url 'mailing:client_detail' client.pk %}">
+                    {{ client.name }}</a>
+            </td>
+            <td>
+                {{client.email}}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div class="container">
+    <a href='{% url "mailing:client_create" %}' class="btn btn-secondary my-3"
+       style="background: darkgreen">Добавить</a>
+</div>
+
+{% endblock %}

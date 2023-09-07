@@ -1,0 +1,15 @@
+{% extends 'mailing/base.html' %}
+{% load mediapath %}
+{% block content %}
+<form class="obratnuj-zvonok" autocomplete="off" method='post'>
+    {% csrf_token %}
+    <div class="container">
+        {{ form.as_p }}
+        {% if user.is_authenticated%}
+        <input type="submit" class="btn btn-success" value="Сохранить">
+        {% endif %}
+    </div>
+    <a href="{% url 'mailing:mailing_list' %}" class="btn btn-secondary my-3"
+       style="background: #0062cc">Назад</a>
+</form>
+{% endblock %}

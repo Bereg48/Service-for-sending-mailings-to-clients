@@ -1,0 +1,19 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" class="btn btn-success"
+                           value="Сохранить">
+                </form>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'mailing:home' %}" role="button">Назад
+                    &raquo;</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

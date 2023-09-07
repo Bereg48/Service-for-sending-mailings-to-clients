@@ -1,0 +1,31 @@
+{% extends 'mailing/base.html' %}
+{% load mediapath %}
+{% block content %}
+<div class="table">
+    <table>
+        <tr>
+            <h2>{{ client.name }}</h2>
+            <h3>{{client.email}}</h3>
+        </tr>
+    </table>
+</div>
+
+{% if client.user == user %}
+<div class="container">
+    <a href='{% url "mailing:client_update" client.pk %}' class="btn btn-secondary my-3"
+       style="background: darkgreen">Изменить</a>
+
+    {% endif %}
+
+    {% if perms.mailing.delete_client or client.user == user %}
+    <a href='{% url "mailing:client_delete" client.pk %}' class="btn btn-secondary my-3"
+       style="background: red">Заблокировать</a>
+</div>
+{% endif %}
+
+<div class="container">
+    <a href='{% url "mailing:client_list" %}' class="btn btn-secondary my-3"
+       style="background: blue">Назад</a>
+</div>
+
+{% endblock %}

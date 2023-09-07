@@ -1,0 +1,32 @@
+{% extends 'mailing/base.html' %}
+{% load mediapath %}
+{% block content %}
+<div class="table">
+    <table>
+        <tr>
+            <td>
+                Время рассылки
+            </td>
+            <td>
+                Рассылка
+            </td>
+            <td>
+                Статус
+            </td>
+        </tr>
+        {% for log in log_list %}
+        <tr>
+            <td>
+                {{ log.data_time }}
+            </td>
+            <td>
+                {{log.mailing}}
+            </td>
+            <td>
+                {{ log.status }}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'mailing/base.html' %}
+{% load mediapath %}
+{% block content %}
+
+<div class="card">
+    <h1>{{ object.mail_title }}</h1>
+    <p class="price">{{ object.slug }}</p>
+    <p>{{ object.mail_text }}</p>
+</div>
+<h5 style="color:#FF0000">{{ object.view_count }}</h5>
+<a class="btn btn-warning" href="{% url 'blog:blog_update' object.slug %}" role="button">Изменить
+</a> <br>
+<a class="btn btn-danger" href="{% url 'blog:blog_delete' object.slug %}" role="button">Удалить
+</a> <br>
+{% endblock %}
