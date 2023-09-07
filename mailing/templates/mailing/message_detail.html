@@ -2,13 +2,10 @@
 {% load mediapath %}
 {% block content %}
 
-<div class="table">
-    <table>
-        <tr>
-            <h2>{{ message.header }}</h2>
-            <h3>{{message.body}}</h3>
-        </tr>
-    </table>
+<div class="card">
+    <h1>{{ object.mail_title }}</h1>
+    <p class="price">{{ object.slug }}</p>
+    <p>{{ object.mail_text }}</p>
 </div>
 <h5 style="color:#FF0000">{{ object.view_count }}</h5>
 <a class="btn btn-warning" href="{% url 'mailing:message_update' object.pk %}" role="button">Изменить
