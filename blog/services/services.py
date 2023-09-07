@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from django_celery_beat.models import CrontabSchedule, PeriodicTask
 
 from config import settings
-from blog.models import MailingLogs
+from mailing.models import MailingLogs
 
 
 class MessageService:

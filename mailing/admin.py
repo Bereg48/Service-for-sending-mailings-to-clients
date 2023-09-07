@@ -10,10 +10,10 @@ class MailingAdmin(admin.ModelAdmin):
     search_fields = ('status',)
 
 
-@admin.register(Message)
-class MessageAdmin(admin.ModelAdmin):
-    list_display = ('header', 'body')
-    search_fields = ('header',)
+# @admin.register(Message)
+# class MessageAdmin(admin.ModelAdmin):
+#     list_display = ('header', 'body')
+#     search_fields = ('header',)
 
 
 @admin.register(Client)

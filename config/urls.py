@@ -24,6 +24,7 @@ import blog
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('blog/', include(('blog.urls', 'blog'), namespace='blog')),
+                  path('message/', include(('message.urls', 'message'), namespace='message')),
                   path('', include(('mailing.urls', 'mailing'), namespace='mailing')),
                   path('users/', include(('users.urls', 'users'), namespace='users')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -8,8 +8,8 @@
     <p>{{ object.mail_text }}</p>
 </div>
 <h5 style="color:#FF0000">{{ object.view_count }}</h5>
-<a class="btn btn-warning" href="{% url 'mailing:message_update' object.pk %}" role="button">Изменить
+<a class="btn btn-warning" href="{% url 'message:message_update' pk=object.pk %}" role="button">Изменить
 </a> <br>
-<a class="btn btn-danger" href="{% url 'mailing:message_delete' object.pk %}" role="button">Удалить
+<a class="btn btn-danger" href="{% url 'message:message_delete' pk=object.pk %}" role="button">Удалить
 </a> <br>
 {% endblock %}

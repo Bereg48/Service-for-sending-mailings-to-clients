@@ -5,7 +5,7 @@
 <div class="my-3 p-3 bg-white rounded box-shadow">
 
     {% if mailing.user == user or user.is_superuser %}
-    <a href="{% url 'mailing:message_update' message.pk %}" class="border-bottom border-gray pb-2 mb-0">
+    <a href="{% url 'message:message_update' message.pk %}" class="border-bottom border-gray pb-2 mb-0">
         {{ message }}</a>
     {% else %}
     <a href="#" class="border-bottom border-gray pb-2 mb-0">{{ message }}</a>
@@ -19,7 +19,7 @@
     </div>
 
     {% if user.is_staff or user == mailing.user %}
-    <a href="{% url 'mailing:message_delete' message.pk %}" class="btn btn-secondary"
+    <a href="{% url 'message:message_delete' message.pk %}" class="btn btn-secondary"
        style="background: red">Удалить</a>
     {% endif %}
     </div>
@@ -27,7 +27,7 @@
 
 {% if user.is_authenticated %}
 <div class="container">
-    <a href="{% url 'mailing:message_create' %}" class="btn btn-secondary my-3"
+    <a href="{% url 'message:message_create' %}" class="btn btn-secondary my-3"
        style="background: darkgreen">Создать</a>
 {% endif %}
 </div>
