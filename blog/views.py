@@ -10,6 +10,9 @@ class BlogListView(ListView):
     """Представление для просмотра блогов"""
     model = Blog
     form_class = BlogForms
+    success_url = reverse_lazy('blog:blog_list')
+    template_name = 'blog/blog_list.html'
+
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -21,7 +24,7 @@ class BlogDetailView(LoginRequiredMixin, DetailView):
     """Представление для просмотра конкретного блога"""
     model = Blog
     form_class = BlogForms
-    success_url = reverse_lazy('mailing:blog_detail')
+    success_url = reverse_lazy('blog:blog_detail')
     template_name = 'blog/blog_detail.html'
 
     def get_object(self, queryset=None):
@@ -35,7 +38,7 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
     """Представление для создания блога"""
     model = Blog
     fields = ('title', 'text', 'image', 'is_active')
-    success_url = reverse_lazy('mailing:blog_list')
+    success_url = reverse_lazy('blog:blog_list')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
